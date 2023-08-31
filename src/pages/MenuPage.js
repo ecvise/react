@@ -16,7 +16,6 @@ export default function MenuPage() {
   }
   const fncsetCurrentCategory = (id) => {
     setCurrentCategory(id);
-    alert(currentCategory)
     let catitems = items.filter(item => item.category_id==id);
     setFilterItems([...catitems]);
   }
