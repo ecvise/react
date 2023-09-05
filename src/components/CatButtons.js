@@ -2,14 +2,19 @@ import { categories } from '../data/categories';
 
 export default function CatButtons({fncsetCurrentCategory,currentCategory}) {
  
+ return (
+  <>
+    <button key={0} onClick={()=>(fncsetCurrentCategory(0))} type="button" className={`btn me-2 mb-3 ${currentCategory==0?'btn-success':'btn-light'}`} >
+      All
+    </button>
+  {categories.map(function(category) {
+    return (
+      <button key={category.id} onClick={()=>(fncsetCurrentCategory(category.id))} type="button" className={`btn me-2 mb-3 ${currentCategory==category.id?'btn-success':'btn-light'}`} >
+      {category.title}
+    </button>
+    )
+  })}
+ </> 
+ )
   
-  return (
-    categories.map(category => (
-      <>
-       <button key={category.id} onClick={()=>(fncsetCurrentCategory(category.id))} type="button" className={currentCategory==category.id?'btn-success btn m-2 ':'btn btn-light m-2 '}>
-        {category.title}
-      </button>
-      </>
-    ))
-  );
 }

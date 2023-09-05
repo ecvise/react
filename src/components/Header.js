@@ -1,13 +1,13 @@
 import React from 'react'
 import CartViewOffCanvas from './CartViewOffCanvas'
 
-export default function Header({cart,addToCart,removeFromCart,decrementCart,incrementCart}) {
+export default function Header({handleClose,show,cart,addToCart,removeFromCart,decrementCart,incrementCart}) {
   return (
     <>
     <nav className="navbar navbar-expand-lg bg-body-tertiary"  >
   <div className="container-fluid">
     <a className="navbar-brand" href="#">
-    <img src="kfc-logo.png" alt="Logo" width="30" height="24" class=" me-1" />
+    <img src="kfc-logo.png" alt="Logo" width="30" height="24" className=" me-1" />
       KFC Pakistan</a>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
@@ -36,12 +36,17 @@ export default function Header({cart,addToCart,removeFromCart,decrementCart,incr
         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
         <button className="btn btn-outline-success" type="submit">Search</button>
       </form>
-      <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#cartviewoffcanvasRight" aria-controls="offcanvasRight">View Cart ({cart.length})</button>
+      <button className="btn btn-dark ms-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#cartviewoffcanvasRight" aria-controls="offcanvasRight"> 
+       <i className="fas fa-shopping-cart "></i>  
+       <span className="ms-2 badge rounded-pill bg-danger">
+       {cart.length}
+        </span>
+       </button>
   
     </div>
   </div>
 </nav>
-<CartViewOffCanvas cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} decrementCart={decrementCart} incrementCart={incrementCart}/>
+<CartViewOffCanvas show={show} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} decrementCart={decrementCart} incrementCart={incrementCart}/>
 </>
   )
 }
